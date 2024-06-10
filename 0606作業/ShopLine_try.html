@@ -84,6 +84,7 @@
             display: flex;
             flex-wrap: wrap;
             width: 528px;
+            /*260*2+8*/
             margin-bottom: 8px;
             list-style-position: inside;
             gap: 8px;
@@ -109,22 +110,22 @@
             vertical-align: super;
             /*垂直對齊本文的上標位置*/
             margin-right: 10px;
+            
         }
 
         .introduction_benefit .benefit_block .txt a span {
             color: #0061FF;
-            transition: transform 0.5s ease;
+
         }
 
 
-        .introduction_benefit .benefit_block .txt a img {
+        .introduction_benefit .benefit_block .txt .more a img {
             width: 18px;
             vertical-align: bottom;
-            transition: transform 0.5s ease;
-
+            
         }
-
-        .introduction_benefit .benefit_block .txt a img:hover {
+        .introduction_benefit .benefit_block .txt .more:hover img{
+            transition:0.5s ease;
             transform: translate(5px);
         }
 
@@ -198,7 +199,7 @@
                         <li>獨有網址 ＆ SSL 安全憑證</li>
                         <li>開放 HTML／CSS 編輯</li>
                     </ul>
-                    <div><a href="#"><span>看看開店祕笈</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
+                    <div class="more"><a href="#"><span>看看開店祕笈</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
                 </div>
             </div>
             <div class="benefit_block">
@@ -215,7 +216,7 @@
                         <li>超商代碼／條碼繳費</li>
                         <li>發票開立與串接</li>
                     </ul>
-                    <div><a href="#"><span>了解更多金物流</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
+                    <div class="more"><a href="#"><span>了解更多金物流</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
                 </div>
             </div>
             <div class="benefit_block">
@@ -232,7 +233,7 @@
                         <li>會員分級／點數／購物金</li>
                         <li>FB／Google／LINE 廣告追蹤</li>
                     </ul>
-                    <div><a href="#"><span>看更多優惠模組</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
+                    <div class="more"><a href="#"><span>看更多優惠模組</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
                 </div>
             </div>
             <div class="benefit_block">
@@ -249,7 +250,7 @@
                         <li>自訂聊天機器人腳本</li>
                         <li>訊息整合中心</li>
                     </ul>
-                    <div><a href="#"><span>看更多社群購物功能</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
+                    <div class="more"><a href="#"><span>看更多社群購物功能</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
                 </div>
             </div>
             <div class="benefit_block">
@@ -266,7 +267,7 @@
                         <li>門市快速集客工具</li>
                         <li>Smart OMO 會員導購工具</li>
                     </ul>
-                    <div><a href="#"><span>了解更多全通路整合</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
+                    <div class="more"><a href="#"><span>了解更多全通路整合</span></a><a href="#"><img src="./icon/arrow.png" alt=""></a></div>
                 </div>
             </div>
         </div>
