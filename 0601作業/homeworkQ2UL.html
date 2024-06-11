@@ -12,6 +12,7 @@
             font-family: 微軟正黑體;
 
         }
+        
 
         footer {
             position: absolute;
@@ -20,10 +21,6 @@
             height: 300px;
             width:  100%;
             bottom: 0px;
-
-
-
-
         }
 
         .text-container {
@@ -69,6 +66,14 @@
 
 
         }
+        table caption{
+            width:1080px;
+            margin-left: 40px;
+            text-align: left;
+        }
+        table tbody{
+            width: 1080px;
+        }
 
         .right-container {
             display: flex;
@@ -76,6 +81,14 @@
             padding: 0 20px;
             
 
+        }
+        .right-container .url{
+            display: flex;
+            
+            align-items: center;
+        }
+        .right-container .url img{
+            max-height: 25px;
         }
 
         .right-container a {
@@ -85,6 +98,7 @@
             margin: 0 5px;
             
         }
+
 
         .right-container table {
             text-align: left;
@@ -112,8 +126,12 @@
 
 <body>
     <footer>
+        
         <table>
+            <caption><img src="./icon/商周.png" alt=""></caption>
+            <tbody>
             <tr>
+                
                 <td>
                     <div class="text-container">
                         <ul class="content">
@@ -189,6 +207,7 @@
                     </table>
                 </td>
             </tr>
+        </tbody>
         </table>
         <div class="copyright">
             &copy; 2019 Business Weekly a division of Cite Publishing Ltd All Rights Reserved.
