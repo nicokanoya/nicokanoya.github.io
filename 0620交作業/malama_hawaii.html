@@ -10,15 +10,57 @@
             margin: 0;
             padding: 0;
             font-family: YakuHanJP, '游ゴシック Medium', YuGothic, YuGothicM, 'Noto Sans Japanese', sans-serif;
+            
         }
 
         .main {
             margin: auto;
             display: flex;
             flex-direction: column;
-
+            
+        }
+        .main .head{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+            position: sticky;
+            top: 0; 
+            background-color: #fff;   
+            z-index: 1;
+        }
+        .main .head .side_menu_button{
+            display: flex;
+            align-items: center;
         }
 
+        .main .head h1 a img{
+            display: inline-block;
+            width: 150px;
+
+        }
+        .main .head .side_menu_button p{
+            display: none;
+
+        }
+        .main .head .icon_info{
+            color: #f65936;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .main .head .icon_sublogo{
+            display: none;
+            
+        }
+        .main .nav_bar{
+            display: none;
+        }
+        .main .container.introduction {
+            position: relative;
+        }
         .main .container.introduction .slg {
             margin: 0 20px;
             display: flex;
@@ -29,7 +71,7 @@
 
         .main .container.introduction .slg h2 {
 
-            font-size: 60px;
+            font-size: 14vw;
 
             font-family: Tw Cen MT Condensed, sans-serif;
         }
@@ -37,7 +79,6 @@
         .main .container.introduction .slg span {
             font-weight: bolder;
         }
-
         .main .container.introduction .pic {
             margin: 20px 0;
 
@@ -56,7 +97,7 @@
             font-weight: 400;
             font-size: 13px;
 
-            margin: 0 20px 140px 20px;
+            margin: 0 20px 0px 20px;
         }
 
         .main .container.story {
@@ -67,7 +108,8 @@
         .main .container.story .pic {
             margin: 0 20px;
             position: relative;
-            overflow: visible;
+            height: 65vw;
+
         }
 
         .main .container.story .pic img {
@@ -75,13 +117,13 @@
             object-fit: contain;
             border-radius: 5%;
             position: absolute;
-            transform: translateY(-50%);
+
 
         }
 
         .main .container.story .txt h3 {
             font-size: 20px;
-            margin: 125px 20px 0 20px;
+            margin: 0px 20px 0 20px;
 
         }
 
@@ -369,7 +411,7 @@
             margin-left: -15px;
             position: absolute;
             bottom: 2px;
-            
+
         }
 
         .main .container.latest .cardlist .card_type[type='event']::before {
@@ -487,12 +529,97 @@
 
         @media screen and (min-width:768px) {
             .main {
-            margin: auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+                margin: auto;
+                /* width: 100%; */
+                display: flex;
+                flex-direction: column;
 
-        }
+            }
+            .main .head{
+                position:static;
+            }
+            .main .head .side_menu_button{
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 15px 20px 5px;
+            }
+            .main .head .side_menu_button img{
+                margin: 15px;
+            }
+            .main .head .side_menu_button p{
+                display: inline;
+                font-size: 12px;
+                color: #6c6d6e;
+                line-height: 15px;
+                
+            }
+            .main .head h1 a{
+                display: flex;
+
+            }
+            .main .head h1 a img{
+                width: 28vw;
+            }
+            .main .head .icon_info{
+                display: none;
+            }
+            .main .head .icon_sublogo{
+                display: contents;
+                
+            }
+            .main .head .icon_sublogo img{
+                width: 10vw;
+            }
+            .main .nav_bar{
+                display: flex;
+                flex-direction: row;
+                height: 50px;
+                border-bottom:1px solid #e6e6e6 ;
+                background-color: #fff;
+                justify-content:space-between;
+                align-items: center;
+                padding: 0px 30px;
+                text-decoration: none;
+                position: sticky;
+                top: 0;    
+                z-index: 1;
+
+            }
+            .main .nav_bar a{
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            .main .nav_bar .icon_info{
+                color: #f65936;
+            }
+            .main .nav_bar .nav_menu{
+                
+                display: flex;
+                list-style: none;
+                
+            }
+            .main .nav_bar .nav_menu li a{
+                color: #000;
+            }
+
+            .main .nav_bar .nav_menu :nth-child( n+2  of li){
+                margin-left: 27px;
+            }
+            .main .nav_bar .industry_icon{
+                
+                color: #6c6d6e;
+            }
+            .main .nav_bar .industry_icon::after{
+                content:'';
+                width: 20px;
+                height: 20px;
+                background-image: url(./icon/nav_right_top_arrow.svg);
+                background-repeat: no-repeat;
+                position:absolute;
+                transform: translateY(-2px);
+
+            }
             .main .container.introduction .slg {
                 display: flex;
                 flex-direction: row-reverse;
@@ -502,10 +629,11 @@
             }
 
             .main .container.introduction .slg h2 {
-                font-size: 10vw;
+
+                font-size: 14vw;
                 line-height: 9vw;
                 position: relative;
-                top: 40px;
+                top: 60px;
 
             }
 
@@ -522,12 +650,11 @@
 
             .main .container.introduction section .pic {
                 width: 70%;
-                height: 100%;
                 margin: 0;
             }
 
             .main .container.introduction section .pic img {
-                margin-left: -20px
+                margin-left: -20px;
             }
 
             .main .container.introduction section p {
@@ -553,10 +680,11 @@
                 grid-area: 1/1/span 1/span 1;
                 position: relative;
                 margin-right: 0;
+                height: 100%;
             }
 
             .main .container.story .pic img {
-
+                width: 100%;
                 position: relative;
                 height: 100%;
 
@@ -625,7 +753,7 @@
 
             .main .container.latest .cardlist {
                 display: grid;
-                grid-template-rows: 10% repeat(2,1fr);
+                grid-template-rows: 10% repeat(2, 1fr);
                 grid-template-columns: repeat(4, 24.25%);
                 gap: 1%;
             }
@@ -682,6 +810,30 @@
 
 <body>
     <div class="main">
+        <div class="head">
+            <div class="side_menu_button">
+                <img src="./icon/head_search.svg" alt="malamaha_hawaii">
+                <p>
+                ハワイ州 <br>
+                レスポンシブル・ツーリズム <br>
+                情報サイト
+                </p>
+            </div>
+            <h1><a href="#"><img src="./icon/logo.svg" alt=""></a></h1>
+            <a href="#" class="icon_info">マラマハワイとは</a>
+            <a href="#" class="icon_sublogo"><img  src="./icon/head_hawaii_island.png" alt=""></a>
+        </div>
+        <nav class="nav_bar">
+            <a href="#" class="icon_info">マラマハワイとは</a>
+            <ul class="nav_menu">
+                <li><a href="#">旅行者にできること</a></li>
+                <li><a href="#">取組み紹介</a></li>
+                <li><a href="#">関連映像</a></li>
+                <li><a href="#">コミュニティ</a></li>
+                <li><a href="#">特集</a></li>
+            </ul>
+            <a href="#" class="industry_icon">業界関係の方へ</a>
+        </nav>
         <div class="container introduction">
             <div class="slg">
                 <h2>
