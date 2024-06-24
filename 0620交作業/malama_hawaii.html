@@ -106,6 +106,7 @@
         .main .container.story {
             margin: 10px 0px;
             background-color: #f9f6f5;
+            width: 100%;
         }
 
         .main .container.story .pic {
@@ -197,7 +198,7 @@
         .main .container.story .about .cardlist .card {
             width: 300px;
             height: 370px;
-            border-radius: 3%;
+            border-radius: 10px;
             text-decoration: none;
             color: #fff;
             padding: 15px 15px;
@@ -229,7 +230,6 @@
 
         .main .container.story .about .cardlist .card h4 {
             font-size: 20px;
-            letter-spacing: -1.8px;
 
         }
 
@@ -452,18 +452,20 @@
         .main .container.latest .cardlist .card .pic {
             overflow: hidden;
             height: 35vw;
+            border-radius: 10px;
         }
 
         .main .container.latest .cardlist .card.active .pic {
             height: 60%;
             overflow: hidden;
+            border-radius: 0;
         }
 
         .main .container.latest .cardlist .card .pic img {
             width: 100%;
             height: 100%;
 
-            border-radius: 10px;
+            
 
             object-fit: cover;
         }
@@ -660,11 +662,14 @@
 
             .main .container.introduction section .pic {
                 width: 70%;
+                max-width: 900px;
                 margin: 0;
+                
             }
 
             .main .container.introduction section .pic img {
                 margin-left: -20px;
+                border-radius: 10px;
             }
 
             .main .container.introduction section p {
@@ -679,15 +684,16 @@
                 display: none;
             }
             .main .container{
+                width: 100%;
                 margin: auto;
-                max-width: 1500px;
             }
             .main .container.story {
                 display: grid;
                 grid-template: 1fr 20% 1fr/repeat(2, auto);
                 gap: 10px;
                 margin: 0 0 50px 0;
-                padding: 0 100px;
+                
+                width: 100%;
 
             }
 
@@ -750,6 +756,7 @@
 
             .main .container.story .about .cardlist .card {
                 width: 25vw;
+                max-width: 300px;
                 height: 50vh;
                 padding: 35px;
             }
@@ -777,9 +784,9 @@
 
             .main .container.latest .cardlist {
                 display: grid;
-                grid-template-rows: 10% repeat(2, 1fr);
-                grid-template-columns: repeat(4, 24.25%);
-                gap: 20px;
+                grid-template-rows: 10% repeat(2, 42% );
+                grid-template-columns: repeat(4, 22.75%);
+                gap: 3%;
             }
 
             .main .container.latest .cardlist .cardlist_title h3 {
@@ -812,7 +819,9 @@
             .main .container.latest .cardlist .card.active .txt time {
                 grid-area: 2/1/span 1/ span 1;
             }
-
+            .main .container.latest .cardlist .card.active .pic img{
+                border-radius: 10px;
+            }
             .main .container.latest .cardlist:nth-child(2n-1) .card.active {
                 grid-area: 2/3/span 2/span 2;
 
