@@ -446,11 +446,7 @@
 
         .main .container.latest .cardlist .card .pic {
             overflow: hidden;
-
-            height: 30%;
-            overflow: hidden;
-
-
+            height: 35vw;
         }
 
         .main .container.latest .cardlist .card.active .pic {
@@ -523,12 +519,7 @@
 
         }
 
-        .main .container.latest .cardlist .card.active .pic img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            border-radius: 2%;
-        }
+
 
         @media screen and (min-width:768px) {
             .main {
@@ -676,7 +667,10 @@
             .main .container.introduction section p .break {
                 display: none;
             }
-
+            .main .container{
+                margin: auto;
+                max-width: 1500px;
+            }
             .main .container.story {
                 display: grid;
                 grid-template: 1fr 20% 1fr/repeat(2, auto);
