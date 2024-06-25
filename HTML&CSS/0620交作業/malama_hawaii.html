@@ -325,7 +325,10 @@
             display: grid;
             grid-template-rows: 8% repeat(4, 1fr);
             grid-template-columns: repeat(2, 47.5%);
-            gap:5%;
+            row-gap: 1%;
+            column-gap: 5%;
+           
+
         }
 
         .main .container.latest .cardlist .cardlist_title {
@@ -788,6 +791,7 @@
                 display: grid;
                 grid-template-rows: 10% repeat(2, 42% );
                 grid-template-columns: repeat(4, 22.75%);
+                /* grid-template-areas:10% repeat(2, 42% )/ repeat(4, 22.75%); */
                 gap: 3%;
             }
 
@@ -804,8 +808,9 @@
             }
 
             .main .container.latest .cardlist .card .pic {
-
-                height: 12vw;
+                height: 45%;
+                overflow: hidden;
+                object-fit: cover;
             }
 
 
