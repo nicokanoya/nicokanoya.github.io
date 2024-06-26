@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+            font-family: '微軟正黑體';
+            font-weight: bold;
+        }
         .wrap {
-            width: 400px;
+            width: 450px;
             border-radius: 15px;
             margin: auto;
             background-image: linear-gradient(to right top, red, yellow, blue);
             padding: 2px;
+            
 
         }
 
@@ -23,7 +28,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: #fff;
+            background-color: #cde9f7;
 
         }
 
@@ -33,27 +38,18 @@
 
         label {
             text-align: center;
+            
 
         }
 
         #input_guess {
             width: 80%;
             margin: 0 auto;
+            }
 
 
 
-        }
 
-        .txt {
-            margin: 10px auto 10px auto;
-            margin-top: 10px;
-            padding: 5px 10px;
-            width: 300px;
-            height: 20px;
-            font-size: 15px;
-            line-height: 20px;
-            text-align: center;
-        }
 
         .btn_list {
             display: flex;
@@ -84,10 +80,9 @@
         <div class="container">
             <h1>終極密碼</h1>
 
-            <label for="guess">規則：請輸入1-100之間的數字，來猜出答案。</label>
+            <label for="input_guess">請輸入1-100之間的數字，來猜出答案。</label>
             <br>
             <input type="text" id="input_guess" disabled></input>
-            <p class="txt"></p>
             <div class="btn_list">
                 <div class="btn submit" click="no">就是他!</div>
                 <div class="btn start" click="yes">開始</div>
@@ -97,46 +92,51 @@
     </div>
     </div>
     <script>
-        /*開始，給隨機數*/
-        const startBtn = document.querySelector('.start');
+        
+        const label_text=document.querySelector('label');
+        const btn=document.querySelector('.btn');
+        const input_text=document.getElementById('input_guess');
+
+        const submitBtn=document.querySelector('.submit');
+        const startBtn=document.querySelector('.start');
+        const seeAbtn=document.querySelector('.seeA');
+
         let answer;
         let min = 1;
         let max = 100;
-
+        /*開始，給隨機數*/
         function startRandom() {
             min=1;
             max=100;
             answer = Math.floor(Math.random() * (100 - 1) + 1);
-            document.querySelector('.txt').textContent = '';
+            label_text.textContent = `在${min}-${max}之間`;
             /*給guess跟看答案按鈕屬性*/
 
-            document.querySelector('.submit').setAttribute('click', 'yes');
-            document.querySelector('.seeA').setAttribute('click', 'yes');
-            document.querySelector('.start').setAttribute('click', 'no');
-            document.getElementById('input_guess').removeAttribute('disabled');
+            submitBtn.setAttribute('click', 'yes');
+            seeAbtn.setAttribute('click', 'yes');
+            startBtn.setAttribute('click', 'no');
+            input_text.removeAttribute('disabled');
         }
         startBtn.addEventListener('click', startRandom);
         /*看答案*/
-        const seeABtn = document.querySelector('.seeA');
+
 
         function seeAnswer() {
-            document.querySelector('.txt').textContent = `答案是：${answer}`;
-            document.querySelector('.submit').setAttribute('Click', 'no');
-            document.querySelector('.start').setAttribute('Click', 'yes');
-            document.getElementById('input_guess').setAttribute('disabled', '');
-            document.querySelector('.seeA').setAttribute('Click', 'no');
-            document.querySelector('.start').textContent = '重新開始';
+            label_text.textContent = `答案是：${answer}`;
+            submitBtn.setAttribute('Click', 'no');
+            startBtn.setAttribute('Click', 'yes');
+            input_text.setAttribute('disabled', '');
+            seeAbtn.setAttribute('Click', 'no');
+           startBtn.textContent = '重新開始';
         }
-        seeABtn.addEventListener('click', seeAnswer);
+        seeAbtn.addEventListener('click', seeAnswer);
 
         /*開始猜*/
-        const guessInput = document.getElementById('input_guess');
-        const guessBtn = document.querySelector('.submit');
-        const text = document.querySelector('.txt');
-        function checkNumber() {
-            let test = guessInput.value;
-            let number = Number.parseInt(guessInput.value);
+        
 
+        function checkNumber() {
+            let number = Number.parseInt(input_text.value);
+            input_text.value='';
             if (number) {
                 if (number >= max || number <= min) {
                     window.alert(`請輸入${min}-${max}之間的數字`);
@@ -144,12 +144,12 @@
                 }
                 if (number > answer) {
                     max = number;
-                    text.textContent = `${min}-${max}之間`;
+                    label_text.textContent = `在${min}-${max}之間`;
                     return;
                 }
                 if (number < answer) {
                     min = number;
-                    text.textContent = `${min}-${max}之間`;
+                    label_text.textContent = `在${min}-${max}之間`;
                     return;
                 }
             } else {
@@ -157,17 +157,17 @@
                 return;
             }
             if (number === answer) {
-                text.textContent = `猜對了!答案是${answer}`;
+                label_text.textContent = `猜對了!答案是${answer}`;
                 window.alert(`猜對了!答案是${answer}`)
-                document.querySelector('.submit').setAttribute('click', 'no');
-                document.querySelector('.seeA').setAttribute('click', 'no');
-                document.querySelector('.start').setAttribute('click', 'yes');
-                document.querySelector('.start').textContent = '在玩一次';
+                submitBtn.setAttribute('click', 'no');
+                seeAbtn.setAttribute('click', 'no');
+                startBtn.setAttribute('click', 'yes');
+                startBtn.textContent = '在玩一次';
             }
         }
-        guessBtn.addEventListener('click', checkNumber)
+        submitBtn.addEventListener('click', checkNumber)
 
-        /*不知道在幹嘛的變形*/
+        /*效果可撥的變形*/
         function random(number) {
             return Math.floor(Math.random() * (number + 1)+100)
         }
@@ -177,7 +177,7 @@
             const borderBgCol3 = `rgb(${random(155)},${random(155)},${random(155)})`;
             document.querySelector('.wrap').setAttribute('style', `background-image: linear-gradient(to right top,${borderBgCol1},${borderBgCol2},${borderBgCol3})`);
         }
-        document.querySelector('.btn').addEventListener('click', changebd);
+        btn.addEventListener('click', changebd);
     </script>
 </body>
 
