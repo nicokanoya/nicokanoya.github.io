@@ -68,13 +68,15 @@ function Createcalender(container, month, year) {
             ) {
 
                 data.todolist.sort((a, b) => {
-                    if (a.AMPM === '上午') {
+                    return a.hour - b.hour
+                }).sort((a, b) => {
+                    if (a.AMPM === '上午' ) {
                         return -1;
                     }
-                    if (a.AMPM === '下午') {
+                    if (a.AMPM === '下午' ) {
                         return 1;
                     }
-                    return a.hour - b.hour
+
                 }).forEach(todothing => {
                     const li = document.createElement("li");
                     li.classList.add("todo")
@@ -96,7 +98,7 @@ function Createcalender(container, month, year) {
                 })
             }
         })
-    
+
         container.querySelector(".calendar-body").append(calenderItemEl)
     }
 
@@ -245,7 +247,7 @@ function getValue(year, month, date) {
     }
     reloadrendering()
     addModalBootstrap.hide();
-    
+
 }
 //這裡要改
 //如果有同日期就檢查，再來，如果有同時間就提出警告
@@ -273,8 +275,8 @@ function LoadfromStorage() {
 }
 //更新localstorage
 function updateLocalStorage(LocalStorageData) {
-    
-    const JSONdata = JSON.stringify(LocalStorageData.sort((a,b)=>a.id-b.id));
+
+    const JSONdata = JSON.stringify(LocalStorageData.sort((a, b) => a.id - b.id));
     window.localStorage.setItem("todoList", JSONdata);
     reloadrendering();
 }
@@ -288,7 +290,7 @@ function reloadrendering() {
     Createcalender(containerLast, currentMonth - 1, currentYear)
     Createcalender(containerNow, currentMonth, currentYear)
     Createcalender(containerNext, currentMonth + 1, currentYear)
-    
+
 }
 //edit跟delete modal
 
@@ -312,9 +314,9 @@ function deleteData() {
     const oldLocalDateWithDataIndex = oldLocalDate.todolist.findIndex(x => x.AMPM === oldData.AMPM && x.hour === oldData.hour && x.minute === oldData.minute)
     const a = oldLocalDate.todolist.splice(oldLocalDateWithDataIndex, 1)
     // console.log(a)
-    if(oldLocalDate.todolist.length<1){
-        const oldLocalDateidx=localDataList.indexOf(oldLocalDate)
-        localDataList.splice(oldLocalDateidx,1)
+    if (oldLocalDate.todolist.length < 1) {
+        const oldLocalDateidx = localDataList.indexOf(oldLocalDate)
+        localDataList.splice(oldLocalDateidx, 1)
     }
     updateLocalStorage(localDataList)
     addModalBootstrap.hide();
