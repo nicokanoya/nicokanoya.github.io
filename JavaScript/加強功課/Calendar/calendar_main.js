@@ -239,6 +239,15 @@ function getValue(year, month, date) {
         // console.log(localSameDateData)
         const todothingdata = todoData.todolist.find(x => x)
         localSameDateData.todolist.push(todothingdata)
+        localSameDateData.todolist.sort((a, b) => {
+            if (a.AMPM === '上午' ) {
+                return -1;
+            }
+            if (a.AMPM === '下午' ) {
+                return 1;
+            }
+    
+        })
         // console.log(todothingdata)
         updateLocalStorage(LocalStorageData);
     } else {
@@ -254,12 +263,16 @@ function getValue(year, month, date) {
 function checkDuplicateTime(todoData, LocalStorageData) {
     if (LocalStorageData.some((local) => local.id === todoData.id)) {
         const local = LocalStorageData.find((local) => local.id === todoData.id)
-        if (local.todolist.some(x => x.AMPM === todoData.todolist.find((todo) => todo).AMPM) && local.todolist.some(x => x.hour === todoData.todolist.find((todo) => todo).hour) &&
-            local.todolist.some(x => x.minute === todoData.todolist.find((todo) => todo).minute)
+        local.todolist.forEach(x=>{
+            if(x.AMPM ===todoData.todolist.find((todo) => todo).AMPM && 
+            x.hour ===todoData.todolist.find((todo) => todo).hour &&
+            x.minute ===todoData.todolist.find((todo) => todo).minute
         ) {
             window.alert("同時間有其他事!")
             return false
         }
+        })
+        
     }
 
     return true
@@ -273,9 +286,9 @@ function LoadfromStorage() {
         return JSON.parse(localData)
     }
 }
-//更新localstorage
+//更新localstora
 function updateLocalStorage(LocalStorageData) {
-
+    
     const JSONdata = JSON.stringify(LocalStorageData.sort((a, b) => a.id - b.id));
     window.localStorage.setItem("todoList", JSONdata);
     reloadrendering();
@@ -311,13 +324,23 @@ function deleteData() {
     //找出舊資料，刪除
     const oldId = `${oldData.year}${formatMonth}${formatDate}`;
     const oldLocalDate = localDataList.find((localdata) => localdata.id === oldId)
-    const oldLocalDateWithDataIndex = oldLocalDate.todolist.findIndex(x => x.AMPM === oldData.AMPM && x.hour === oldData.hour && x.minute === oldData.minute)
-    const a = oldLocalDate.todolist.splice(oldLocalDateWithDataIndex, 1)
-    // console.log(a)
+    // const oldLocalDateWithDataIndex = oldLocalDate.todolist.findIndex(x => x.AMPM === oldData.AMPM && x.hour === oldData.hour && x.minute === oldData.minute)
+
     if (oldLocalDate.todolist.length < 1) {
         const oldLocalDateidx = localDataList.indexOf(oldLocalDate)
         localDataList.splice(oldLocalDateidx, 1)
     }
+    localDataList.sort((a, b) => {
+        return a.hour - b.hour
+    }).sort((a, b) => {
+        if (a.AMPM === '上午' ) {
+            return -1;
+        }
+        if (a.AMPM === '下午' ) {
+            return 1;
+        }
+
+    })
     updateLocalStorage(localDataList)
     addModalBootstrap.hide();
 
