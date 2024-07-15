@@ -324,23 +324,13 @@ function deleteData() {
     //找出舊資料，刪除
     const oldId = `${oldData.year}${formatMonth}${formatDate}`;
     const oldLocalDate = localDataList.find((localdata) => localdata.id === oldId)
-    // const oldLocalDateWithDataIndex = oldLocalDate.todolist.findIndex(x => x.AMPM === oldData.AMPM && x.hour === oldData.hour && x.minute === oldData.minute)
-
+    const oldLocalDateWithDataIndex = oldLocalDate.todolist.findIndex(x => x.AMPM === oldData.AMPM && x.hour === oldData.hour && x.minute === oldData.minute)
+    oldLocalDate.todolist.splice(oldLocalDateWithDataIndex,1)
     if (oldLocalDate.todolist.length < 1) {
         const oldLocalDateidx = localDataList.indexOf(oldLocalDate)
         localDataList.splice(oldLocalDateidx, 1)
     }
-    localDataList.sort((a, b) => {
-        return a.hour - b.hour
-    }).sort((a, b) => {
-        if (a.AMPM === '上午' ) {
-            return -1;
-        }
-        if (a.AMPM === '下午' ) {
-            return 1;
-        }
 
-    })
     updateLocalStorage(localDataList)
     addModalBootstrap.hide();
 
