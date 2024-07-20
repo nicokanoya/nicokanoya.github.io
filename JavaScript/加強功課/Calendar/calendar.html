@@ -21,6 +21,7 @@
         .box {
             position: relative;
             display: flex;
+            /* background-color: aqua; */
         }
 
         .scroll {
@@ -53,7 +54,12 @@
 
 
         }
+        .change-group .btn-group .btn-changemonth{
+            background-color: #cefcd1;
+            
+        } 
 
+        
         .calendar-title {
             display: grid;
             grid-template-rows: auto;
@@ -73,13 +79,41 @@
 
         .d-block {
             height: 30px;
+            border-radius: 15px;
+            background-color: #bfffe7;
+            border: 2px solid #ddd;
         }
 
         .c-block {
             height: 100%;
             text-align: end;
             padding: 5px 10px;
+            border-radius: 15px;
+        }
+        .c-block:nth-child(7n) .date-title{
+            color: red;
+        }
+        .c-block:nth-child(7n+1) .date-title{
+            color: red;
+        }
+        .c-block:hover {
+            background: linear-gradient(270deg, #fff, #baecff,#fff);
+            background-size: 800% 800%;
+            animation: gradientMove 1s ease ;
+        }
 
+        @keyframes gradientMove {
+            0% {
+                background-position: 0%  50%;
+            }
+
+            50% {
+                background-position: 100%  100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
 
         }
 
@@ -92,9 +126,9 @@
         .date-title .add-event {
             color: #71cdf1;
             font-weight: bolder;
-            background-color: #fff;
+            background-color: #ffffab;
             border-radius: 50%;
-            border-color: #ddd;
+            border-color: #f0f0a3;
             font-size: 15px;
             height: 30px;
             width: 30px;
@@ -107,22 +141,26 @@
             opacity: 1;
         }
 
+        .c-block .date-title .add-event:active {
+            transform: rotate(360deg);
+        }
+
         .date-title .date {
             margin-left: auto;
         }
 
         .c-block:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            ;
+
         }
 
         .todo-list {
             padding: 3px;
             overflow: auto;
-            height: 10vh;
+            height: 9vh;
             margin: 0;
             flex-shrink: 1;
-            scrollbar-width:thin;
+            scrollbar-width: thin;
         }
 
         .todo-list>.todo {
@@ -167,13 +205,13 @@
         <div class="scroll">
             <div class="container last snap-point" id="container-last">
                 <div class="change-group d-flex justify-content-evenly align-items-center   my-4">
-                    <span class="col-3 fs-1 w-f">CALENDAR</span>
+                    <span class="col-3 fs-1 w-f fw-bolder">行事曆</span>
 
                     <div class="btn-group col-2 h-50 border " role="group"
                         aria-label="Button group with nested dropdown">
 
                         <div class="btn-group col-12" role="group">
-                            <button type="button" class="btn btn-outline-primary  dropdown-toggle"
+                            <button type="button" class="btn btn-changemonth   dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 2024年6月
                             </button>
@@ -214,12 +252,12 @@
             </div>
             <div class="container now snap-point" id="container-now">
                 <div class="change-group d-flex justify-content-evenly align-items-center   my-4">
-                    <span class="col-3 fs-1 w-f">CALENDAR</span>
+                    <span class="col-3 fs-1 w-f fw-bolder">行事曆</span>
                     <div class="btn-group col-2 h-50 border " role="group"
                         aria-label="Button group with nested dropdown">
 
                         <div class="btn-group col-12" role="group">
-                            <button type="button" class="btn btn-outline-primary  dropdown-toggle"
+                            <button type="button" class="btn btn-changemonth  dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 2024年7月
                             </button>
@@ -260,12 +298,12 @@
             </div>
             <div class="container next snap-point" id="container-next">
                 <div class="change-group d-flex justify-content-evenly align-items-center   my-4">
-                    <span class="col-3 fs-1 w-f">CALENDAR</span>
+                    <span class="col-3 fs-1 w-f fw-bolder">行事曆</span>
                     <div class="btn-group col-2 h-50 border " role="group"
                         aria-label="Button group with nested dropdown">
 
                         <div class="btn-group col-12" role="group">
-                            <button type="button" class="btn btn-outline-primary  dropdown-toggle"
+                            <button type="button" class="btn btn-changemonth  dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 2024年8月
                             </button>
@@ -332,29 +370,27 @@
                                     </div>
                                 </div>
                                 <input type="number" min="0" max="12" class="form-control col-5"
-                                    aria-label="Sizing example input" id="hour"
-                                    aria-describedby="inputGroup-sizing-default" value="0">
-                                <span class=" input-group-text" id="inputGroup-sizing-default">點</span>
+                                    aria-label="Sizing example input" id="hour" aria-describedby="" value="0">
+                                <span class=" input-group-text" id="">點</span>
                                 <input type="number" min="0" max="59" class="form-control col-5"
-                                    aria-label="Sizing example input" id="minute"
-                                    aria-describedby="inputGroup-sizing-default" value="0">
-                                <span class="input-group-text" id="inputGroup-sizing-default">分</span>
+                                    aria-label="Sizing example input" id="minute" aria-describedby="" value="0">
+                                <span class="input-group-text" id="">分</span>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">這天想做點...</span>
+                                <span class="input-group-text" id="">這天想做點...</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input" id="whatToDo"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="">
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">想去...</span>
+                                <span class="input-group-text" id="">想去...</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input" id="where"
-                                    aria-describedby="inputGroup-sizing-default">
+                                    aria-describedby="">
                             </div>
 
                             <div class="color-choose w-25  input-group mb-3 d-flex">
-                                <span class="input-group-text " id="inputGroup-sizing-default m-auto ">顏色</span>
+                                <span class="input-group-text " id=" m-auto ">顏色</span>
                                 <input type="color" class="form-control d-block" aria-label="Sizing example input"
-                                    id="tagColor" aria-describedby="inputGroup-sizing-default">
+                                    id="tagColor" aria-describedby="">
                             </div>
                         </div>
                     </form>

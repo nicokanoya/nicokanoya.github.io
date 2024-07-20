@@ -15,7 +15,7 @@ const containerNext = document.querySelector(".container.next");
 
 window.addEventListener('load', () => {
     reloadrendering()
-    nowMark()
+    
 })
 function nowMark() {
     const liAll = document.querySelectorAll('.c-block');
@@ -44,7 +44,7 @@ function Createcalender(container, month, year) {
     const lastDate = new Date(year, month + 1, 0).getDate();
     const datalist = LoadfromStorage()
     // 當月
-    for (let j = 1; j <= 35; j++) {
+    for (let j = 1; j <= 42; j++) {
         //處理日期格子
         const calenderItemEl = calenderItemTemplate.content.querySelector(".c-block")
             .cloneNode(true)
@@ -76,8 +76,8 @@ function Createcalender(container, month, year) {
                     if (a.AMPM === '下午' ) {
                         return 1;
                     }
-
                 }).forEach(todothing => {
+                    console.log(todothing)
                     const li = document.createElement("li");
                     li.classList.add("todo")
                     li.dataset.year = getdate.dataset.year;
@@ -87,7 +87,8 @@ function Createcalender(container, month, year) {
 
                     li.dataset.hour = todothing.hour;
                     li.dataset.minute = todothing.minute;
-                    li.innerHTML = `${todothing.AMPM}  ${todothing.hour} ： ${todothing.minute}<br>
+                    li.innerHTML = 
+                    `${todothing.AMPM}  ${todothing.hour} ： ${todothing.minute}<br>
                     <span>${todothing.todo}</span>`
                     li.dataset.where = todothing.destination
                     li.setAttribute('data-bs-toggle', 'modal')
@@ -235,6 +236,7 @@ function getValue(year, month, date) {
         return
     };
     if (LocalStorageData.some((local) => local.id === todoData.id)) {
+        //日期篩選一樣
         const localSameDateData = LocalStorageData.find((local) => local.id === todoData.id);
         // console.log(localSameDateData)
         const todothingdata = todoData.todolist.find(x => x)
@@ -248,7 +250,7 @@ function getValue(year, month, date) {
             }
     
         })
-        // console.log(todothingdata)
+       
         updateLocalStorage(LocalStorageData);
     } else {
         LocalStorageData.push(todoData);
@@ -303,7 +305,7 @@ function reloadrendering() {
     Createcalender(containerLast, currentMonth - 1, currentYear)
     Createcalender(containerNow, currentMonth, currentYear)
     Createcalender(containerNext, currentMonth + 1, currentYear)
-
+    nowMark()
 }
 //edit跟delete modal
 
