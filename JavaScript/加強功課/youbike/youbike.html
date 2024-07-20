@@ -253,7 +253,9 @@
             let marker;
 
             marker = L.marker([station.latitude, station.longitude]);
-
+            marker.on('click',function(){
+                map.flyTo(marker.getLatLng(),17)
+            })
             marker.bindPopup(`<p>${station.sna}</p>剩餘/空位/總共：${station.available_rent_bikes}/${station.available_return_bikes}/${station.total}`)
             markers.addLayer(marker)//markers=>附近的marker群組，增加到圖層(layer)
             map.addLayer(markers)
