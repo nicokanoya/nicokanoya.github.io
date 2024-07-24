@@ -1,0 +1,649 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: SF Pro TC, SF Pro Text, SF Pro Icons, PingFang TC, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.container .row {
+    padding-top: 38px;
+    margin: 0
+}
+.container .navbar .container-fluid{
+    max-width: 1260px;
+}
+.container .navbar .collapse button {
+    font-size: 28px;
+    font-weight: bolder;
+    color: #000000;
+    padding: 1px;
+    margin-left: 20px;
+}
+.container .navbar .collapse button[disabled]{
+    color: #fa0;
+}
+@media screen and (min-width:990px) {
+    .container .navbar {
+        background-color: #fff;
+    }
+
+    .container .navbar .container-fluid {
+        display: flex;
+        justify-content: space-evenly;
+        width: 83vw;
+
+        /* max-width: 1140px; */
+    }
+
+    .container .navbar .container-fluid #search {
+        order: 1;
+    }
+
+    .container .navbar .container-fluid #Shopping-cart {
+        order: 1;
+    }
+
+    .container .navbar .collapse .navbar-nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .container .navbar .collapse button {
+        font-size: 10px;
+
+    }
+    .container .navbar .collapse button[disabled]{
+        color:#fa0
+
+    }
+
+    .container.page-title .row.head-wrap {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .container.page-title .row.head-wrap h1 {
+        display: flex;
+
+    }
+
+    .container.page-title .row.head-wrap .choose-schema {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+.container.page-title .row h1 {
+    font-size: 40px;
+    font-weight: bolder;
+    letter-spacing: -0.05em;
+
+}
+
+.container.page-title .row .calc {
+    padding: 0;
+}
+
+.container.page-title .row .calc .price-schema {
+    font-size: 14px;
+}
+
+.container.page-title .head-wrap .calc .edu-schema {
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+}
+
+.container.page-title .head-wrap .calc .edu-schema img {
+    aspect-ratio: 1/1;
+    width: 35px;
+    margin-right: 4px;
+
+}
+
+.container.page-title .head-wrap .choose-schema {
+    padding: 20px 0 4px;
+}
+
+.container.page-title .head-wrap .choose-schema a {
+    width: fit-content;
+    margin: 6px 0;
+    padding: 12px 16px;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    background-color: #f5f5f7;
+    border-radius: 18px;
+    position: relative;
+}
+
+.container.page-title .head-wrap .choose-schema a::after {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    aspect-ratio: 1/1;
+    content: '+';
+    border-radius: 50%;
+    border: 1px solid #000000;
+    position: relative;
+    left: 3px;
+    bottom: 1px;
+    line-height: 1;
+}
+
+.container.main .row .choose-title {
+    font-size: 21px;
+    font-weight: bolder;
+
+
+}
+
+@media screen and (min-width:990px) {
+    .container.main {
+        display: flex;
+    }
+
+    .carousel {
+        width: 58.3333%;
+        position: relative;
+
+    }
+
+    .carousel .carouselbox {
+        /* position: sticky; */
+        padding-top: 30px;
+        height: fit-content;
+    }
+
+    .container.main .row h2 {
+        margin-bottom: 30px;
+    }
+
+    .container.main .container.choose {
+        width: 41.6667%;
+    }
+}
+
+.container.main .row .choose-text {
+    color: #86868b;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+.container.main .row.carousel {
+    padding: 0;
+    margin: auto;
+    width: 100%;
+}
+
+.container.main .choose {
+    padding: 0;
+}
+
+
+
+.container.main .row.carousel-indicators {
+    width: 100%;
+
+}
+
+.container.main .row.carousel .carousel-inner .carousel-item.active {
+
+    /* background-color: #fff; */
+    width: 100%;
+    height: 100%;
+    /* 目前要先點才能滑 */
+    /* 大小問題 */
+    /* 間隔問題 */
+}
+
+.container.main .row.carousel .carousel-inner .carousel-item img {
+    border-radius: 22px;
+    /* height: 300px; */
+    width: auto;
+    aspect-ratio: 640 / 360;
+    box-sizing: border-box;
+    padding: 0 2px;
+
+}
+
+.container.main .row.carousel .carousel-indicators {
+    position: relative;
+    display: flex;
+
+    gap: 10px;
+}
+
+.container.main .row.carousel .carousel-indicators button {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #000000;
+    top: 10px;
+
+}
+
+.container.main .row .choose-radiolist {
+    margin: auto;
+    /* width: 90%; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    padding: 0;
+}
+
+.container.main .row .choose-radiolist label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(134, 134, 139);
+    border-radius: 15px;
+    height: 98px;
+    gap: 5px;
+
+}
+.container.main .row.size .pico .txt .title {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.container.main .row.size .pico .txt p {
+    font-size: 11px;
+    color: #6e6e73;
+    font-weight: bolder;
+}
+
+.container.main .row.size .pico .pic {
+    display: flex;
+    justify-content: center;
+}
+
+.container.main .row.size .pico .pic img {
+
+
+    aspect-ratio: 607/442;
+    width: 80%;
+
+
+    /* height: auto; */
+}
+
+.container.main .row.size .choose-radiolist {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+}
+
+.container.main .row.size .choose-radiolist label {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.container.main .row.size .choose-radiolist label .text {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: start;
+}
+
+.container.main .row.size .choose-radiolist label .text .title {
+    font-size: 15px;
+    font-weight: bolder;
+    /* margin-bottom: 100px; */
+}
+
+.container.main .row.size .choose-radiolist label .text .info {
+    font-size: 11px;
+}
+
+.container.main .row.size .choose-radiolist label .price {
+    font-size: 12px;
+}
+
+.container.main .row .choose-radiolist input.choose {
+    display: none;
+}
+
+.container.main .row .choose-radiolist input.choose:checked+label {
+    border: 1px solid rgb(0, 113, 227);
+    border-width: 2px;
+}
+
+.container.main .row .choose-radiolist label .pic img {
+    width: 27px;
+    height: 27px;
+}
+
+.container.main .row .choose-radiolist label p {
+    margin: 0;
+    font-size: 12px;
+}
+
+
+.container.main .row .pico {
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.container.main .row .pico img {
+    width: 100%;
+    border-radius: 22px;
+    height: 100%;
+    aspect-ratio: 640 / 360;
+    box-sizing: border-box;
+    /* padding: 0 5px; */
+    /* padding-bottom: 30px; */
+
+}
+
+.container.main .row.storage .choose-radiolist {
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width:990px) {
+    .container.main .row.storage .pico {
+        display: none;
+    }
+}
+
+.container.main .row.storage .choose-radiolist .rom {
+    font-weight: bolder;
+    font-size: 16px;
+
+}
+
+.container.main .row.storage .choose-radiolist .unit {
+    font-weight: bolder;
+    font-size: 13px;
+}
+
+.container.main .row.storage .choose-radiolist .unit::after {
+    content: "1";
+    font-size: 10px;
+    vertical-align: text-top;
+}
+
+.container.main .row .question {
+    background-color: #f5f5f7;
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    padding: 15px 30px;
+    height: fit-content;
+}
+
+.container.main .row .question .plus {
+
+    text-align: center;
+    font-size: 13px;
+    width: 13px;
+    height: 13px;
+    line-height: 0.8em;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+.container.main .row .question .title {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.container.main .row .question p {
+    font-size: 13.5px;
+    margin: 0;
+}
+
+.container.main .row.wifi .pico {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #f5f5f7;
+    border-radius: 22px;
+    padding: 20px;
+    /* height: auto; */
+    /* overflow: hidden; */
+}
+
+@media screen and (min-width:990px) {
+    .container.main .row.wifi .pico {
+        display: none;
+    }
+
+
+}
+
+.container.main .row.wifi .pico .txt .title {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.container.main .row.wifi .pico .txt p {
+    font-size: 11px;
+    color: #6e6e73;
+    font-weight: bolder;
+}
+
+.container.main .row.wifi .pico .pic {
+    display: flex;
+    justify-content: center;
+}
+
+.container.main .row.wifi .pico .pic img {
+
+
+    aspect-ratio: 607/442;
+    width: 80%;
+
+
+    /* height: auto; */
+}
+
+.container.main .row.wifi .choose-radiolist {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+}
+
+.container.main .row.wifi .choose-radiolist label {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.container.main .row.wifi .choose-radiolist label .text {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: start;
+}
+
+.container.main .row.wifi .choose-radiolist label .text .title {
+    font-size: 15px;
+    font-weight: bolder;
+    /* margin-bottom: 100px; */
+}
+
+.container.main .row.wifi .choose-radiolist label .text .info {
+    font-size: 11px;
+}
+
+.container.main .row.wifi .choose-radiolist label .price {
+    font-size: 12px;
+}
+
+.container.main .row.wifi .question {
+    margin-top: 20px;
+}
+
+.container.main .row.wifi .question p {
+    font-size: 12px;
+}
+
+.container.main .row.wifi .question .note {
+    margin-top: 10px;
+    color: #6e6e73;
+    /* font-size: 14px; */
+}
+
+.container.main .question.storage-question {
+    margin-bottom: 50px;
+}
+
+.container.main .row.shop-content {
+    padding-top: 0;
+}
+
+@media screen and (min-width:990px) {
+    
+.container.main .row.shop-content .pico{
+    display: none;
+}
+}
+
+.container.main .row.shop-content .price {
+    font-size: 21px;
+    font-weight: bolder;
+    letter-spacing: -0.05em;
+}
+
+.container.main .row.shop-content .tax {
+    font-size: 14px;
+    color: #6e6e73;
+}
+
+.container.main .row.shop-content .info {
+    font-size: 13px;
+    color: #06c;
+}
+
+.container.main .row.shop-content .info::before {
+
+    content: "i";
+    display: inline-block;
+    border: 1px solid #06c;
+    border-radius: 50%;
+    text-align: center;
+    height: 15px;
+    width: 15px;
+    font-size: 10px;
+    margin-right: 5px;
+
+}
+
+.container.main .row.shop-content .shop-card {
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.container.main .row.shop-content .takegood {
+
+    margin-bottom: 30px;
+}
+
+.container.main .row.shop-content .takegood p {
+    margin: 0;
+}
+
+.container.main .row.shop-content .takegood .buyrightnow {
+    font-size: 12px;
+}
+
+.container.main .row.shop-content .takegood .address {
+    font-size: 12px;
+}
+
+.container.main .row.shop-content .takegood .else {
+    font-size: 12px;
+    color: #06c;
+}
+
+.container.main .row.shop-content .takegood .else::after {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    aspect-ratio: 1/1;
+    content: '+';
+    border-radius: 50%;
+    border: 1px solid #06c;
+    position: relative;
+    left: 3px;
+    bottom: 1px;
+    line-height: 1;
+}
+
+.container.main .row.shop-content .addcart {
+    font-size: 12px;
+}
+
+.container.main .row.shop-content .question {
+    background-color: #fff;
+    position: relative;
+
+}
+
+.container.main .row.shop-content .question .title::after {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    aspect-ratio: 1/1;
+    content: '+';
+    border-radius: 50%;
+    border: 1px solid #000;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+    line-height: 1;
+}
+
+.container.footer {
+    width: 100%;
+    background-color: #eee;
+    max-width: none;
+}
+
+.container.footer .content {
+    padding: 30px 0;
+    font-size: 10px;
+    color: #6e6e73;
+
+}
+
+.container.footer .content a {
+    text-decoration: none;
+    color: #6e6e73;
+}

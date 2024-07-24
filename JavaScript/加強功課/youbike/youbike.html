@@ -124,7 +124,9 @@
             //台北的
             fetchYouBikeData(taipeiYoubikeData)
                 .then(data => {
+                    console.log(data)
                     clearMarkerGroup();
+                    
                     data.forEach((station) => {
                         station.city = "臺北市"
                         
@@ -243,7 +245,7 @@
         function fetchYouBikeData(citydata) {
 
             const youbikedata = fetch(citydata).then(res => res.json());
-            // console.log(taipeidata)
+            // console.log(youbikedata)
             // 
             // const newpeidata=fetch(newpeiYoubikeData).then(res=>res.json())
             // const doublepeiYoubike=taipeidata.concat(newpeidata)

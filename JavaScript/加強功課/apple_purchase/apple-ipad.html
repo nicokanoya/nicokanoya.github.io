@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./apple_ipad.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container nav-bar p-0 m-0  mw-100">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary  col-12">
+
+        <div class="container-fluid col-12">
+          <a class="navbar-brand" href="#"><img src="./img/apple_icon.svg" alt=""></a>
+          <button id="search" class="border-0 bg-body-tertiary ms-auto"><img src="./img/search.svg" alt=""></button>
+          <button id="Shopping-cart" class="border-0 bg-body-tertiary ms-4"><img src="./img/shopping_bag.svg"
+              alt=""></button>
+          <button class="navbar-toggler ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>商店</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>Mac</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" name="option-models" id="models-IPad" class="nav-link" @click="handleModel"
+                  value="IPad" aria-current="page">IPad</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" name="option-models" id="models-IPad Pro" class="nav-link" @click="handleModel"
+                  value="IPad Pro" disabled>IPad Pro</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" name="option-models" id="models-Ipad Air" class="nav-link" @click="handleModel"
+                  value="IPad Air">Ipad Air</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" name="option-models" id="models-Ipad mini" class="nav-link" @click="handleModel"
+                  value="IPad mini" disabled>Ipad mini</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>TV和家庭</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>娛樂</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>配件</button>
+              </li>
+              <li class="nav-item">
+                <button type="radio" class="nav-link" disabled>支援服務</button>
+              </li>
+              <!-- <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container page-title">
+      <div class="row head-wrap ">
+        <div class="calc col-md-6">
+          <h1 class="purchase_text">購買 {{selected.models}} </h1>
+          <div class="price-schema">
+            <span class="currency">NT${{Number(selected.price).toLocaleString()}}</span>
+            <span class="price"></span>
+            <span>起</span>
+          </div>
+
+        </div>
+
+        <div class="choose-schema col-md-4">
+          <a href="#" class="Exchange d-block">透過換購，可獲享 NT$1,100 – NT$36,900 折抵優惠**
+          </a>
+          <a href="#" class="installment d-block">
+            可選用零利率分期付款，最長可達 3 月</a>
+        </div>
+      </div>
+    </div>
+    <div class="container main">
+
+      <div id="carouselIndicators" class="row pic-carousel  carousel slide  m-0 position-relative">
+        <div class="carouselbox sticky-lg-top">
+          <template v-if="selected.models=='IPad'">
+            <template v-if="selected.color=='藍色' ">
+              <div class="carousel-inner ">
+                <div class="carousel-item active">
+                  <img src="./img/ipad_blue_front.jpg" class="d-block w-100" alt="ipad_blue_front">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_blue_behind.jpg" class="d-block w-100" alt="ipad_blue_behind">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_blue_side.jpg" class="d-block w-100" alt="ipad_blue_side">
+                </div>
+              </div>
+            </template>
+            <template v-if="selected.color=='粉紅色'">
+              <div class="carousel-inner ">
+                <div class="carousel-item active">
+                  <img src="./img/ipad_pink_front.jpg" class="d-block w-100" alt="ipad_pink_front">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_pink_behind.jpg" class="d-block w-100" alt="ipad_pink_behind">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_pink_side.jpg" class="d-block w-100" alt="ipad_pink_side">
+                </div>
+              </div>
+            </template>
+            <template v-if="selected.color=='黃色'">
+              <div class="carousel-inner ">
+                <div class="carousel-item active">
+                  <img src="./img/ipad_yellow_front.jpg" class="d-block w-100" alt="ipad_yellow_front">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_yellow_behind.jpg" class="d-block w-100" alt="ipad_yellow_behind">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_yellow_side.jpg" class="d-block w-100" alt="ipad_yellow_side">
+                </div>
+              </div>
+            </template>
+            <template v-if="selected.color=='銀色'">
+              <div class="carousel-inner ">
+                <div class="carousel-item active">
+                  <img src="./img/ipad_silver_front.jpg" class="d-block w-100" alt="ipad_silver_front">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_silver_behind.jpg" class="d-block w-100" alt="ipad_silver_behind">
+                </div>
+                <div class="carousel-item">
+                  <img src="./img/ipad_silver_side.jpg" class="d-block w-100" alt="ipad_silver_side">
+                </div>
+              </div>
+            </template>
+          </template>
+          <!-- ipad air -->
+          <template v-if="selected.models=='IPad Air'">
+            <!-- 11吋 -->
+            <template v-if="selected.size=='11吋'">
+              <template v-if="selected.color=='太空灰' || selected.color==''">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_11_skygray_front.jpg" class="d-block w-100" alt="ipadAir_11_skygray_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_11_skygray_behind.jpg" class="d-block w-100" alt="ipadAir_11_skygray_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_skygray_side.jpg" class="d-block w-100" alt="ipadAir_skygray_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='藍色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_11_blue_front.jpg" class="d-block w-100" alt="ipadAir_11_blue_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_11_blue_behind.jpg" class="d-block w-100" alt="ipadAir_11_blue_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_blue_side.jpg" class="d-block w-100" alt="ipadAir_blue_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='紫色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_11_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_11_purple_behind.jpg" class="d-block w-100" alt="ipadAir_11_purple_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_purple_side.jpg" class="d-block w-100" alt="ipadAir_purple_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='星光色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_11_starlight_behind.jpg" class="d-block w-100" alt="ipadAir_11_starlight_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_starlight_side.jpg" class="d-block w-100" alt="ipadAir_starlight_side">
+                  </div>
+                </div>
+              </template>
+            </template>
+            <!-- 13吋 -->
+            <template v-else-if="selected.size =='13吋'">
+              <template v-if="selected.color=='太空灰' || selected.color==''">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_13_skygray_front.jpg" class="d-block w-100" alt="ipadAir_13_skygray_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_13_skygray_behind.jpg" class="d-block w-100" alt="ipadAir_13_skygray_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_skygray_side.jpg" class="d-block w-100" alt="ipadAir_skygray_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='藍色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_13_blue_front.jpg" class="d-block w-100" alt="ipadAir_13_blue_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_13_blue_behind.jpg" class="d-block w-100" alt="ipadAir_13_blue_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_blue_side.jpg" class="d-block w-100" alt="ipadAir_blue_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='紫色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_13_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_13_purple_behind.jpg" class="d-block w-100" alt="ipadAir_11_purple_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_purple_side.jpg" class="d-block w-100" alt="ipadAir_purple_side">
+                  </div>
+                </div>
+              </template>
+              <template v-if="selected.color=='星光色'">
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_13_starlight_behind.jpg" class="d-block w-100" alt="ipadAir_11_starlight_behind">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./img/ipadAir_starlight_side.jpg" class="d-block w-100" alt="ipadAir_starlight_side">
+                  </div>
+                </div>
+              </template>
+            </template>
+          </template>
+          <div class="carousel-indicators flex-shrink-1">
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="container choose ">
+        <div class="row size" v-if="selected.models == 'IPad Air'">
+          <h2><span class="choose-title">機型。 </span><span class="choose-text">選擇尺寸。</span></h2>
+          <div class="choose-radiolist">
+            <input type="radio" value="11吋" v-model="selected.size" class="choose" name="options-size"
+              id="options-size11" autocomplete="off" @click="handleAirSize">
+            <label class="btn" for="options-size11">
+              <div class="text col-9">
+                <p>
+                  <span class="title">11吋機型</span>
+                </p>
+                <p class="info">
+                  <span>Ultra Retina XDR 顯示器</span>
+                </p>
+              </div>
+              <div class="price col-3">
+                <span class="currency">NT$</span>
+                <span class="price" ref="WIFI">19,900</span>
+              </div>
+
+            </label>
+
+            <input type="radio" value="13吋" v-model="selected.size" class="choose" name="options-size"
+              id="options-size13" autocomplete="off"  @click="handleAirSize">
+            <label class="btn" for="options-size13">
+              <div class="text col-9">
+                <p>
+                  <span class="title">13吋機型</span>
+                </p>
+                <p class="info">
+                  <span>Ultra Retina XDR 顯示器</span>
+                </p>
+              </div>
+              <div class="price col-3">
+                <span class="currency">NT$</span>
+                <span class="price" ref="mobileNet">26,900</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row color">
+          <h2><span class="choose-title">外觀。</span><span class="choose-text">挑選喜愛的顏色。</span></h2>
+          <div class="choose-radiolist">
+            <!-- ipad -->
+            <template v-if="selected.models=='IPad'">
+              <input type="radio" value="藍色" class="choose" name="options-color" id="color-blue"
+                v-model="selected.color" autocomplete="off" checked>
+              <label class="btn" for="color-blue">
+                <div class="pic"><img src="./img/color_blue.png" alt=""></div>
+                <p>藍色</p>
+              </label>
+              <input type="radio" value="粉紅色" class="choose" name="options-color" id="color-pink"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="color-pink">
+                <div class="pic"><img src="./img/color_pink.png" alt=""></div>
+                <p>粉紅色</p>
+              </label>
+              <input type="radio" value="黃色" class="choose" name="options-color" id="color-yellow"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="color-yellow">
+                <div class="pic"><img src="./img/color_yellow.png" alt=""></div>
+                <p>黃色</p>
+              </label>
+              <input type="radio" value="銀色" class="choose" name="options-color" id="color-silver"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="color-silver">
+                <div class="pic"><img src="./img/color_silver.png" alt=""></div>
+                <p>銀色</p>
+              </label>
+            </template>
+            <!-- ipad air -->
+            <template v-if="selected.models=='IPad Air'">
+              <input type="radio" value="太空灰" class="choose" name="options-color" id="air_color_skygray"
+                v-model="selected.color" autocomplete="off" checked>
+              <label class="btn" for="air_color_skygray">
+                <div class="pic"><img src="./img/air_color_skygray.png" alt=""></div>
+                <p>太空灰</p>
+              </label>
+              <input type="radio" value="藍色" class="choose" name="options-color" id="air_color_blue"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="air_color_blue">
+                <div class="pic"><img src="./img/air_color_blue.png" alt=""></div>
+                <p>藍色</p>
+              </label>
+              <input type="radio" value="紫色" class="choose" name="options-color" id="air_color_purple"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="air_color_purple">
+                <div class="pic"><img src="./img/air_color_purple.png" alt=""></div>
+                <p>紫色</p>
+              </label>
+              <input type="radio" value="星光色" class="choose" name="options-color" id="air_color_starlight"
+                v-model="selected.color" autocomplete="off">
+              <label class="btn" for="air_color_starlight">
+                <div class="pic"><img src="./img/air_color_starlight.png" alt=""></div>
+                <p>星光色</p>
+              </label>
+            </template>
+          </div>
+
+        </div>
+
+        <div class="row storage">
+          <h2><span class="choose-title">儲存裝置。 </span><span class="choose-text">選擇需要的儲存空間大小。</span></h2>
+          <div class="pico">
+            <template v-if="selected.models=='IPad'">
+              <template v-if="selected.color=='藍色' || selected.color==''">
+                <img src="./img/ipad_blue_front.jpg" class="d-block w-100" alt="ipad_blue_front">
+              </template>
+              <template v-if="selected.color=='粉紅色' ">
+                <img src="./img/ipad_pink_front.jpg" class="d-block w-100" alt="ipad_pink_front">
+              </template>
+              <template v-if="selected.color=='黃色' ">
+                <img src="./img/ipad_yellow_front.jpg" class="d-block w-100" alt="ipad_yellow_front">
+              </template>
+              <template v-if="selected.color=='銀色' ">
+                <img src="./img/ipad_silver_front.jpg" class="d-block w-100" alt="ipad_silver_front">
+              </template>
+            </template>
+            <template v-if="selected.models=='IPad Air'">
+              <template v-if="selected.size =='11吋'">
+                <template v-if="selected.color=='太空灰' || selected.color==''">
+                  <img src="./img/ipadAir_11_skygray_front.jpg" class="d-block w-100" alt="ipadAir_11_skygray_front">
+                </template>
+                <template v-if="selected.color=='藍色' ">
+                  <img src="./img/ipadAir_11_blue_front.jpg" class="d-block w-100" alt="ipadAir_11_blue_front">
+                </template>
+                <template v-if="selected.color=='紫色' ">
+                  <img src="./img/ipadAir_11_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
+                </template>
+                <template v-if="selected.color=='星光色' ">
+                  <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                </template>
+              </template>
+              <template v-if="selected.size =='13吋'">
+                <template v-if="selected.color=='太空灰' || selected.color==''">
+                  <img src="./img/ipadAir_13_skygray_front.jpg" class="d-block w-100" alt="ipadAir_13_skygray_front">
+                </template>
+                <template v-if="selected.color=='藍色' ">
+                  <img src="./img/ipadAir_13_blue_front.jpg" class="d-block w-100" alt="ipadAir_13_blue_front">
+                </template>
+                <template v-if="selected.color=='紫色' ">
+                  <img src="./img/ipadAir_13_purple_front.jpg" class="d-block w-100" alt="ipadAir_13_purple_front">
+                </template>
+                <template v-if="selected.color=='星光色' ">
+                  <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_13_starlight_front">
+                </template>
+              </template>
+            </template>
+          </div>
+          <div class="choose-radiolist">
+
+            <template v-if="selected.models=='IPad'">
+              <input type="radio" value="64GB" v-model="selected.storage" class="choose" name="options-ROM"
+                id="options-64GB" autocomplete="off">
+              <label class="btn" for="options-64GB">
+                <p>
+                  <span class="rom">64</span>
+                  <span class="unit">GB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price" value="11900">11,900</span>
+                  <span>起</span>
+                </p>
+              </label>
+              <input type="radio" value="256GB" v-model="selected.storage" class="choose" name="options-ROM"
+                id="options-256GB" autocomplete="off">
+              <label class="btn" for="options-256GB">
+                <p>
+                  <span class="rom">256</span>
+                  <span class="unit">GB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price"  value="16900">16,900</span>
+                  <span>起</span>
+                </p>
+              </label>
+            </template>
+            <!-- air -->
+            <template v-if="selected.models=='IPad Air'">
+              <input type="radio" value="128GB" v-model="selected.storage" class="choose" name="options-ROM"
+                id="options-128GB" autocomplete="off" @click="handleAirNet">
+              <label class="btn" for="options-128GB">
+                <p>
+                  <span class="rom" >128</span>
+                  <span class="unit" >GB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price" ref="air128GB" value="19900" >19,900</span>
+                  <span>起</span>
+                </p>
+              </label>
+              <input type="radio" value="256GB" v-model="selected.storage" class="choose" name="options-ROM"
+                id="options-256GB" autocomplete="off" @click="handleAirNet">
+              <label class="btn" for="options-256GB">
+                <p>
+                  <span class="rom" >256</span>
+                  <span class="unit" >GB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price" ref="air256GB" value="23400" >23,400</span>
+                  <span>起</span>
+                </p>
+              </label>
+              <input type="radio" value="512GB" v-model="selected.storage" class="choose" name="options-ROM"
+              id="options-512GB" autocomplete="off" @click="handleAirNet">
+            <label class="btn" for="options-512GB">
+              <p>
+                <span class="rom" >512</span>
+                <span class="unit" >GB</span>
+              </p>
+              <p class="price-ratio">
+                <span class="currency">NT$</span>
+                <span class="price" ref="air512GB" value="30400" >30,400</span>
+                <span>起</span>
+              </p>
+            </label>
+            <input type="radio" value="1TB" v-model="selected.storage" class="choose" name="options-ROM"
+            id="options-1TB" autocomplete="off" @click="handleAirNet">
+          <label class="btn" for="options-1TB">
+            <p>
+              <span class="rom">1</span>
+              <span class="unit">TB</span>
+            </p>
+            <p class="price-ratio">
+              <span class="currency">NT$</span>
+              <span class="price" ref="air1TB" value="37400">37,400</span>
+              <span>起</span>
+            </p>
+          </label>
+            </template>
+
+          </div>
+          <div class="question storage-question">
+            <div class="plus">+</div>
+            <div class="title">不確定需要多少儲存空間？</div>
+            <p>你的 iPad 儲存空間愈大，你就有愈多空間儲存數位內容，滿足現在和未來所需。</p>
+          </div>
+        </div>
+
+        <div class="row wifi">
+          <h2><span class="choose-title">連線能力。 </span><span class="choose-text">選擇連線方式。</span></h2>
+          <div class="pico">
+            <div class="txt">
+              <div class="title">Wi-Fi + 行動網路。</div>
+              <p>隨時隨地瀏覽網頁、傳送電子郵件與文字訊息、進行 FaceTime 通話、存取檔案，以及更多更多。</p>
+            </div>
+            <div class="pic"><img src="./img/wifi_boyAndGirl.jpg" alt=""></div>
+
+          </div>
+          <div class="choose-radiolist">
+            <input type="radio" value="WIFI" v-model="selected.netfunc" class="choose" name="options-WIFI"
+              id="options-WIFI" autocomplete="off">
+            <label class="btn" for="options-WIFI">
+              <div class="text col-9">
+                <p>
+                  <span class="title">WI-FI</span>
+                </p>
+                <p class="info">
+                  <span>每部 iPad 皆可連線 Wi-Fi，你可以撥打電話、傳送訊息，以及使用 FaceTime。</span>
+                </p>
+              </div>
+              <div class="price col-3">
+                <span class="currency">NT$</span>
+                <span class="price" ref="WIFI">11,900</span>
+              </div>
+
+            </label>
+
+            <input type="radio" value="WIFI+行動網路" v-model="selected.netfunc" class="choose" name="options-WIFI"
+              id="options-WIFIandmobileNet" autocomplete="off">
+            <label class="btn" for="options-WIFIandmobileNet">
+              <div class="text col-9">
+                <p>
+                  <span class="title">Wi-Fi + 行動網路</span>
+                </p>
+                <p class="info">
+                  <span>Wi-Fi + 行動網路機型讓你在無法使用 Wi-Fi 時也能進行連線。</span>
+                </p>
+              </div>
+              <div class="price col-3">
+                <span class="currency">NT$</span>
+                <span class="price" ref="mobileNet">16,900</span>
+              </div>
+            </label>
+          </div>
+          <div class="question storage-question">
+            <div class="plus">+</div>
+            <div class="title">想要進一步了解 Wi-Fi + 行動網路機型？</div>
+            <p>如果現場沒有可供使用的 Wi-Fi，Wi-Fi + 行動網路機型可讓你透過行動網路數據方案保持連線。</p>
+            <p class="note">購買 Wi-Fi + 行動網路機型後，需要設定行動網路連線。</p>
+          </div>
+        </div>
+        <template v-if="selected.color!='' && selected.storage!='' && selected.netfunc!='' ">
+          <div class="row shop-content">
+            <div class="pico">
+              <template v-if="selected.models=='IPad'">
+                <template v-if="selected.color=='藍色' || selected.color==''">
+                  <img src="./img/ipad_blue_front.jpg" class="d-block w-100" alt="ipad_blue_front">
+                </template>
+                <template v-if="selected.color=='粉紅色' || selected.color==''">
+                  <img src="./img/ipad_pink_front.jpg" class="d-block w-100" alt="ipad_pink_front">
+                </template>
+                <template v-if="selected.color=='黃色' || selected.color==''">
+                  <img src="./img/ipad_yellow_front.jpg" class="d-block w-100" alt="ipad_yellow_front">
+                </template>
+                <template v-if="selected.color=='銀色' || selected.color==''">
+                  <img src="./img/ipad_silver_front.jpg" class="d-block w-100" alt="ipad_silver_front">
+                </template>
+              </template>
+              <template v-if="selected.models=='IPad Air'">
+                <template v-if="selected.size =='11吋'">
+                  <template v-if="selected.color=='太空灰' || selected.color==''">
+                    <img src="./img/ipadAir_11_skygray_front.jpg" class="d-block w-100" alt="ipadAir_11_skygray_front">
+                  </template>
+                  <template v-if="selected.color=='藍色' ">
+                    <img src="./img/ipadAir_11_blue_front.jpg" class="d-block w-100" alt="ipadAir_11_blue_front">
+                  </template>
+                  <template v-if="selected.color=='紫色' ">
+                    <img src="./img/ipadAir_11_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
+                  </template>
+                  <template v-if="selected.color=='星光色' ">
+                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                  </template>
+                </template>
+                <template v-if="selected.size =='13吋'">
+                  <template v-if="selected.color=='太空灰' || selected.color==''">
+                    <img src="./img/ipadAir_13_skygray_front.jpg" class="d-block w-100" alt="ipadAir_13_skygray_front">
+                  </template>
+                  <template v-if="selected.color=='藍色' ">
+                    <img src="./img/ipadAir_13_blue_front.jpg" class="d-block w-100" alt="ipadAir_13_blue_front">
+                  </template>
+                  <template v-if="selected.color=='紫色' ">
+                    <img src="./img/ipadAir_13_purple_front.jpg" class="d-block w-100" alt="ipadAir_13_purple_front">
+                  </template>
+                  <template v-if="selected.color=='星光色' ">
+                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_13_starlight_front">
+                  </template>
+                </template>
+              </template>
+            </div>
+            <div class="price">
+              <span class="currency">NT$</span>
+              <span class="price" :value="selected.price">{{Number(selected.price).toLocaleString()}}</span>
+              <span>起</span>
+            </div>
+            <p class="tax">含營業稅和其他法定稅費：約 NT$830。*</p>
+            <p class="info">0% 利率分期付款，每月 NT$1,408 起，共 12 個月</p>
+            <hr>
+            <div class="shop-card">
+              {{selected.size}}{{selected.models}}{{selected.color}} {{selected.storage}} {{selected.netfunc}}
+            </div>
+            <div class="takegood">
+              <p class="buyrightnow">立即訂購。店內取貨：</p>
+              <p class="address">今天，地點：Apple 台北 101</p>
+              <p class="else">查看其他直營店</p>
+            </div>
+            <button class="addcart btn btn-primary ">加入購物車</button>
+            <div class="question">
+              <div class="title">需要一點時間嗎？</div>
+              <p>將這部裝置收藏到「你的收藏」，即可保留你選擇的所有配置，你可以隨時從上次離開處接續進行。 </p>
+            </div>
+
+          </div>
+        </template>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+  <!-- <div class="container shop-content"></div> -->
+  <div class="container footer col-12">
+    <div class="container content">
+      <p>價格皆含稅與運送費用。</p>
+      <p>* 上述費用為近似值，可能會隨時間變動。</p>
+      <ol>
+        <li>可用儲存空間會隨著眾多因素而減少並有所差異。儲存容量會隨軟體版本、設定與 iPad 機型而有所變動。1GB = 10 億位元組；1TB = 1 兆位元組。格式化後的實際容量可能較少。</li>
+        <li>顯示器採用圓角設計。以矩形對角線量測時，13 吋 iPad Pro 機型為 13 吋；11 吋 iPad Pro 機型為 11.1 吋；13 吋 iPad Air 機型為 12.9 吋；11 吋 iPad Air
+          機型為 10.86 吋；10.9 吋 iPad 機型為 10.86 吋；8.3 吋 iPad mini 機型為 8.3 吋。實際可視區較小。</li>
+      </ol>
+      <p> 以矩形對角線量測時，13 吋 iPad Air 機型為 12.9 吋；11 吋 iPad Air 機型為 10.86 吋。實際可視區較小。</p>
+      <p>配件另售，並會隨供應狀況而有所變動。</p>
+      <p>** 折抵換購服務由 Apple
+        的換購服務合作夥伴提供。折抵金額報價僅為預估價，實際折抵換購價值可能低於估價。實際換購估價視你折抵換購裝置的狀況、推出年份與機型而有所差異。並非所有裝置均符合折抵條件。你必須已達法定成年年齡，才有折抵換購的資格，以獲享折抵優惠或取得
+        Apple Store 禮品卡。你現有裝置的價值，可能適用於購買新 Apple
+        裝置。實際獲得的換購價值，是根據收到符合條件的裝置，是否吻合你在估價時所提供的描述而定。可能須按照新裝置的全額售價繳納加值型營業稅。店內換購須出示政府核發的有效照片證件，才能享有此項優惠
+        (當地法律可能要求保存這份資訊)。優惠可能無法在所有直營店提供，線上和店內折抵換購的估價可能會有所不同。部分直營店可能會有額外的要求。Apple 直營店不提供電腦換購。Apple
+        的換購服務合作夥伴保留以任何理由拒絕、取消任何折抵換購交易，或限制接受任何裝置 (及其數量) 參與本優惠的權利。更多詳情可自 Apple 的換購服務合作夥伴取得，以了解符合換購及回收條件的裝置。須遵守 Apple
+        的換購服務合作夥伴所訂立的其他條款。</p>
+      <p>°° 優惠適用於符合資格的訂戶使用符合條件的裝置。符合條件的裝置因優惠而異。免費試用結束後，每項服務將依你所在地區每月適用的價格續訂，直到取消為止。每個 Apple ID
+        於每項服務僅可獲享一次優惠，並且在適用情況下，如果你是「家人共享」群組的成員，不論你或家人購買多少部裝置，每個家庭僅可獲享一次優惠。每項優惠須在符合條件裝置啟用後的 3
+        個月內訂閱。須使用相容的硬體與軟體。須遵守相關條款。詳情請參閱 <a href="">apple.com/tw/promo</a></p>
+      <p>°° Apple Music 優惠僅適用於新訂戶。試用結束後，每月 NT$165。優惠限時提供，新訂戶須將符合條件的裝置連線至搭載 iOS 15 或 iPadOS 15 或以上版本的 Apple
+        裝置。優惠在符合條件裝置配對後的 3 個月內有效。目前已有符合條件裝置的使用者無須再購買音訊產品。訂閱方案將自動續訂直到取消為止。須受限制與其他<a href="">條款</a>約束</p>
+      <p>°° Apple Arcade 優惠僅適用於新訂戶和符合資格的重新訂閱用戶。免費試用結束後，每月 NT$220。每個 Apple ID
+        僅可獲享一次優惠，如果你是「家人共享」群組的成員，不論你或家人購買多少部裝置，每個家庭僅可獲享一次優惠。如果你或你的家人之前已接受 Apple Arcade
+        三個月免費訂閱服務優惠，則不再適用此優惠。優惠在符合條件裝置啟用後的 3 個月內有效。訂閱方案將自動續訂直到取消為止。須受限制與其他</p>
+      <p>*** 使用 Apple TV+ 與 Apple Arcade 須訂閱服務。</p>
+      <p> 超過 200 款遊戲的跨裝置適用情形視硬體和軟體的相容性而有所不同。部分內容可能未在所有地區提供。</p>
+      <p>我們會透過你的網際網路 IP 位址所對應的地理區域，或你上次瀏覽 Apple 網站輸入的位置資訊，估計你的約略位置。</p>
+    </div>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./main.js"></script>
+
+</body>
+
+</html>

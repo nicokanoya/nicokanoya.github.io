@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            .row{
+                display: flex;
+                
+                flex-wrap: wrap;
+            }
+            .text{
+                padding: 25px;
+                height: 500px;
+                border: 5px solid red;
+                border-radius: 15px;
+                overflow: auto;
+            }
+            
+        </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center  rounded-4">
+            <div class="text input col-12 col-md-6">
+                <div class="mb-3">
+                    <label for="guess" class="form-label">?A?B</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3">你的答案是</span>
+                        <input type="text" class="guess form-control" id="guess"
+                            aria-describedby="basic-addon3 basic-addon4">
+                    </div>
+                    <div class="form-text" id="basic-addon4">請輸入一組4個不同的數字</div>
+                    <button type="button" class="btn btn_check btn-success" disabled>送出</button>
+                    <button type="button" class="btn btn_seeA btn-warning" disabled>看答案</button>
+                    <button type="button" class="btn btn_start btn-danger">開始</button>
+                    
+                </div>
+            </div>
+            <div class="text output col-12 col-md-6">
+                <span>記錄區</span>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+        const startBtn =document.querySelector('.btn_start');
+        const seeABtn=document.querySelector('.btn_seeA');
+        const checkABtn=document.querySelector('.btn_check');
+        const textarea=document.querySelector('text');
+        let _a;
+        let _b;
+        let answer;
+        let numArray=Array.from({length:10},(_,idx) => idx);
+        
+        /*開始，產生隨機數*/
+        function Random(){
+            return Math.floor(Math.random()*10);
+        }
+        function getAnswer(){
+            let rndArray = numArray.sort(() => Math.random()-0.5);
+            //-0.5的用意在於，回傳為負值時，前一個元素在後一個元素前；回傳為正值時，前一個元素會跟後一個元素交換位置；0會不變(不過很難骰到0.5)
+            //如果不寫，永遠都正數，都不會換位置
+            answer = rndArray.slice(0,4).join('');
+            //從0開始取4個
+            console.log(answer)
+            seeABtn.removeAttribute('disabled');
+            startBtn.setAttribute('disabled','');
+            checkABtn.removeAttribute('disabled')
+        }
+        startBtn.addEventListener('click',getAnswer);
+
+        /*看答案*/
+        function seeAnswer(){
+            console.log(answer);
+            startBtn.removeAttribute('disabled');
+            seeABtn.setAttribute('disabled','');
+            checkABtn.setAttribute('disabled','');
+        }
+        seeABtn.addEventListener('click',seeAnswer);
+        
+;
+        /*check答案*/
+
+        function tryValidGuess(){
+            let input=document.getElementById('guess').value;
+            console.dir(input);
+            return new Promise((resolve,reject)=>{
+                (!input || input.length ===0) ? reject("請輸入數字") : resolve(input)})
+                .then((input) => Number.parseInt(input,10)===NaN?Promise.reject("請輸入'數字'"): Promise.resolve(input) )
+                .then((input)=>input.length!==4?Promise.reject("必須為4個數字"): Promise.resolve(input))
+                .then((input) =>Array.from(new Set(input)).length!==4?Promise.reject("輸入的數字不可以重複"): Promise.resolve(input))
+                .then((input)=>checkAnswer(input))
+                .catch((err)=>document.querySelector('p').innerHTML +=`${err}<br>`)
+        }
+
+        function checkAnswer(input){
+            _a=0;
+            _b=0;
+                for(let i =0 ; i<input.length;i++){
+                    if(answer[i]==input[i]){
+                        _a++;
+                    }else if(answer.includes(input[i])){
+                        _b++;
+                    }
+                }
+            console.log(`_a=${_a} , _b=${_b}`)
+            document.querySelector('p').innerHTML += `_a=${_a} , _b=${_b}<br>`
+
+        }
+
+
+        checkABtn.addEventListener('click',tryValidGuess);
+        
+        /**/
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
