@@ -15,10 +15,25 @@
 
 <body>
   <div id="app">
-    <div class="container nav-bar p-0 m-0  mw-100">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary  col-12">
+    <div class="title-container" ref="head">
+      <div class="view">
+        <div class="container scrollbar">
+          <div class="bar title">
+            <h3>{{selected.models}}</h3>
+            <div class="price-schema">
+              <span class="currency">NT${{Number(selected.price).toLocaleString()}}</span>
+              <span class="price"></span>
+              <span>起</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div class="container-fluid col-12">
+    </div>
+    <div class="container nav-bar p-0 m-0  mw-100">
+      <nav class="navbar  navbar-expand-lg bg-body-tertiary  col-12">
+
+        <div class="container container-fluid col-12">
           <a class="navbar-brand" href="#"><img src="./img/apple_icon.svg" alt=""></a>
           <button id="search" class="border-0 bg-body-tertiary ms-auto"><img src="./img/search.svg" alt=""></button>
           <button id="Shopping-cart" class="border-0 bg-body-tertiary ms-4"><img src="./img/shopping_bag.svg"
@@ -159,7 +174,8 @@
                     <img src="./img/ipadAir_11_skygray_front.jpg" class="d-block w-100" alt="ipadAir_11_skygray_front">
                   </div>
                   <div class="carousel-item">
-                    <img src="./img/ipadAir_11_skygray_behind.jpg" class="d-block w-100" alt="ipadAir_11_skygray_behind">
+                    <img src="./img/ipadAir_11_skygray_behind.jpg" class="d-block w-100"
+                      alt="ipadAir_11_skygray_behind">
                   </div>
                   <div class="carousel-item">
                     <img src="./img/ipadAir_skygray_side.jpg" class="d-block w-100" alt="ipadAir_skygray_side">
@@ -195,10 +211,12 @@
               <template v-if="selected.color=='星光色'">
                 <div class="carousel-inner ">
                   <div class="carousel-item active">
-                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100"
+                      alt="ipadAir_11_starlight_front">
                   </div>
                   <div class="carousel-item">
-                    <img src="./img/ipadAir_11_starlight_behind.jpg" class="d-block w-100" alt="ipadAir_11_starlight_behind">
+                    <img src="./img/ipadAir_11_starlight_behind.jpg" class="d-block w-100"
+                      alt="ipadAir_11_starlight_behind">
                   </div>
                   <div class="carousel-item">
                     <img src="./img/ipadAir_starlight_side.jpg" class="d-block w-100" alt="ipadAir_starlight_side">
@@ -214,7 +232,8 @@
                     <img src="./img/ipadAir_13_skygray_front.jpg" class="d-block w-100" alt="ipadAir_13_skygray_front">
                   </div>
                   <div class="carousel-item">
-                    <img src="./img/ipadAir_13_skygray_behind.jpg" class="d-block w-100" alt="ipadAir_13_skygray_behind">
+                    <img src="./img/ipadAir_13_skygray_behind.jpg" class="d-block w-100"
+                      alt="ipadAir_13_skygray_behind">
                   </div>
                   <div class="carousel-item">
                     <img src="./img/ipadAir_skygray_side.jpg" class="d-block w-100" alt="ipadAir_skygray_side">
@@ -250,10 +269,12 @@
               <template v-if="selected.color=='星光色'">
                 <div class="carousel-inner ">
                   <div class="carousel-item active">
-                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100"
+                      alt="ipadAir_11_starlight_front">
                   </div>
                   <div class="carousel-item">
-                    <img src="./img/ipadAir_13_starlight_behind.jpg" class="d-block w-100" alt="ipadAir_11_starlight_behind">
+                    <img src="./img/ipadAir_13_starlight_behind.jpg" class="d-block w-100"
+                      alt="ipadAir_11_starlight_behind">
                   </div>
                   <div class="carousel-item">
                     <img src="./img/ipadAir_starlight_side.jpg" class="d-block w-100" alt="ipadAir_starlight_side">
@@ -304,7 +325,7 @@
             </label>
 
             <input type="radio" value="13吋" v-model="selected.size" class="choose" name="options-size"
-              id="options-size13" autocomplete="off"  @click="handleAirSize">
+              id="options-size13" autocomplete="off" @click="handleAirSize">
             <label class="btn" for="options-size13">
               <div class="text col-9">
                 <p>
@@ -411,7 +432,8 @@
                   <img src="./img/ipadAir_11_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
                 </template>
                 <template v-if="selected.color=='星光色' ">
-                  <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                  <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100"
+                    alt="ipadAir_11_starlight_front">
                 </template>
               </template>
               <template v-if="selected.size =='13吋'">
@@ -425,7 +447,8 @@
                   <img src="./img/ipadAir_13_purple_front.jpg" class="d-block w-100" alt="ipadAir_13_purple_front">
                 </template>
                 <template v-if="selected.color=='星光色' ">
-                  <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_13_starlight_front">
+                  <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100"
+                    alt="ipadAir_13_starlight_front">
                 </template>
               </template>
             </template>
@@ -434,7 +457,7 @@
 
             <template v-if="selected.models=='IPad'">
               <input type="radio" value="64GB" v-model="selected.storage" class="choose" name="options-ROM"
-                id="options-64GB" autocomplete="off">
+                id="options-64GB" autocomplete="off" @click="handleAirNet">
               <label class="btn" for="options-64GB">
                 <p>
                   <span class="rom">64</span>
@@ -442,12 +465,12 @@
                 </p>
                 <p class="price-ratio">
                   <span class="currency">NT$</span>
-                  <span class="price" value="11900">11,900</span>
+                  <span class="price" value="11900" >11,900</span>
                   <span>起</span>
                 </p>
               </label>
               <input type="radio" value="256GB" v-model="selected.storage" class="choose" name="options-ROM"
-                id="options-256GB" autocomplete="off">
+                id="options-256GB" autocomplete="off" @click="handleAirNet">
               <label class="btn" for="options-256GB">
                 <p>
                   <span class="rom">256</span>
@@ -455,7 +478,7 @@
                 </p>
                 <p class="price-ratio">
                   <span class="currency">NT$</span>
-                  <span class="price"  value="16900">16,900</span>
+                  <span class="price" value="16900" >16,900</span>
                   <span>起</span>
                 </p>
               </label>
@@ -466,12 +489,12 @@
                 id="options-128GB" autocomplete="off" @click="handleAirNet">
               <label class="btn" for="options-128GB">
                 <p>
-                  <span class="rom" >128</span>
-                  <span class="unit" >GB</span>
+                  <span class="rom">128</span>
+                  <span class="unit">GB</span>
                 </p>
                 <p class="price-ratio">
                   <span class="currency">NT$</span>
-                  <span class="price" ref="air128GB" value="19900" >19,900</span>
+                  <span class="price" ref="air128GB" value="19900">19,900</span>
                   <span>起</span>
                 </p>
               </label>
@@ -479,41 +502,41 @@
                 id="options-256GB" autocomplete="off" @click="handleAirNet">
               <label class="btn" for="options-256GB">
                 <p>
-                  <span class="rom" >256</span>
-                  <span class="unit" >GB</span>
+                  <span class="rom">256</span>
+                  <span class="unit">GB</span>
                 </p>
                 <p class="price-ratio">
                   <span class="currency">NT$</span>
-                  <span class="price" ref="air256GB" value="23400" >23,400</span>
+                  <span class="price" ref="air256GB" value="23400">23,400</span>
                   <span>起</span>
                 </p>
               </label>
               <input type="radio" value="512GB" v-model="selected.storage" class="choose" name="options-ROM"
-              id="options-512GB" autocomplete="off" @click="handleAirNet">
-            <label class="btn" for="options-512GB">
-              <p>
-                <span class="rom" >512</span>
-                <span class="unit" >GB</span>
-              </p>
-              <p class="price-ratio">
-                <span class="currency">NT$</span>
-                <span class="price" ref="air512GB" value="30400" >30,400</span>
-                <span>起</span>
-              </p>
-            </label>
-            <input type="radio" value="1TB" v-model="selected.storage" class="choose" name="options-ROM"
-            id="options-1TB" autocomplete="off" @click="handleAirNet">
-          <label class="btn" for="options-1TB">
-            <p>
-              <span class="rom">1</span>
-              <span class="unit">TB</span>
-            </p>
-            <p class="price-ratio">
-              <span class="currency">NT$</span>
-              <span class="price" ref="air1TB" value="37400">37,400</span>
-              <span>起</span>
-            </p>
-          </label>
+                id="options-512GB" autocomplete="off" @click="handleAirNet">
+              <label class="btn" for="options-512GB">
+                <p>
+                  <span class="rom">512</span>
+                  <span class="unit">GB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price" ref="air512GB" value="30400">30,400</span>
+                  <span>起</span>
+                </p>
+              </label>
+              <input type="radio" value="1TB" v-model="selected.storage" class="choose" name="options-ROM"
+                id="options-1TB" autocomplete="off" @click="handleAirNet">
+              <label class="btn" for="options-1TB">
+                <p>
+                  <span class="rom">1</span>
+                  <span class="unit">TB</span>
+                </p>
+                <p class="price-ratio">
+                  <span class="currency">NT$</span>
+                  <span class="price" ref="air1TB" value="37400">37,400</span>
+                  <span>起</span>
+                </p>
+              </label>
             </template>
 
           </div>
@@ -606,7 +629,8 @@
                     <img src="./img/ipadAir_11_purple_front.jpg" class="d-block w-100" alt="ipadAir_11_purple_front">
                   </template>
                   <template v-if="selected.color=='星光色' ">
-                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100" alt="ipadAir_11_starlight_front">
+                    <img src="./img/ipadAir_11_starlight_front.jpg" class="d-block w-100"
+                      alt="ipadAir_11_starlight_front">
                   </template>
                 </template>
                 <template v-if="selected.size =='13吋'">
@@ -620,7 +644,8 @@
                     <img src="./img/ipadAir_13_purple_front.jpg" class="d-block w-100" alt="ipadAir_13_purple_front">
                   </template>
                   <template v-if="selected.color=='星光色' ">
-                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100" alt="ipadAir_13_starlight_front">
+                    <img src="./img/ipadAir_13_starlight_front.jpg" class="d-block w-100"
+                      alt="ipadAir_13_starlight_front">
                   </template>
                 </template>
               </template>
